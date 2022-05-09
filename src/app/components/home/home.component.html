@@ -1,6 +1,6 @@
 <div class="form-container ">
 <h1>Login</h1>
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (ngSubmit) = "onClickSubmit(loginForm.value)">
     <mat-form-field>
         <input type="text" pattern="[a-z]+" required matInput placeholder="Your Name (Only accepts lowercase letters)" formControlName="name">
         <mat-error *ngIf="name?.errors?.['required']">
@@ -11,9 +11,9 @@
         </mat-error> 
     </mat-form-field>
     <div class="center margin-top">
+        <button class="login" mat-raised-button color="primary" type="submit"   (click)="btnClick()">Continue <a class="list-link" routerLink="list"></a> </button>
         <button class="clear" (click)="handleClear()">Cancel</button>
-        <button class="login" mat-raised-button color="primary" type="submit">Continue <a class="list-link" routerLink="list"></a> </button>
      </div>
+     {{name}}
 </form>
-
 </div>
