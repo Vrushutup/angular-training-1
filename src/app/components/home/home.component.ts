@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
-import { LocalStorageService} from '../../services/local-storage.service'
+// import { LocalStorageService} from '../../services/local-storage.service'
 
 
 @Component({
@@ -11,14 +11,16 @@ import { LocalStorageService} from '../../services/local-storage.service'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  name: any;
+  name!: any;
 
   loginForm=new FormGroup({
     name:new FormControl('',[Validators.required])
   })
   
+  
   constructor(private router: Router,
-    private myservice: LocalStorageService) {}
+    // private myservice: LocalStorageService
+    ) {}
 
   ngOnInit(): void {
 
@@ -29,10 +31,16 @@ export class HomeComponent implements OnInit {
   handleClear(){
     this.loginForm.reset();
   }
-  btnClick=  () => {
+  btnClick(data: { name: String; }){
+    this.name = data.name;
+    localStorage.setItem("name",this.name)
     this.router.navigateByUrl('/list');
-   };
-   onClickSubmit(data: { name: any; })
-    {this.name = data.name;}
+    console.log(this.name);
+  };
+  // onClickSubmit(data: { name: String; })
+  // {
+  //   localStorage.setItem("name",this.name)
+  //   this.name = data.name;
+  //   console.log(this.name);
+   }
 
-}
