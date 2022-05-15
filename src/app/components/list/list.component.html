@@ -1,9 +1,15 @@
-<mat-toolbar class="list" color="primary">
- Welcome {{'vrushabh'}}
- <button mat-button class="logout">
-  <mat-icon  (click)="btnClick()">logout<a class="list-link" routerLink=""></a></mat-icon> 
-    </button>Logout
- <span> 
-    </span>
-</mat-toolbar>
+<div>
+   <mat-toolbar class="list" color="primary">
+      <div class="left">
+         Welcome {{name}}
+      </div>
+      <div>
+         <button mat-button class="logout" type="button"  (click)="btnClick()">
+            <mat-icon>logout<a class="login-link" routerLink=""></a></mat-icon>Logout
+         </button>
+         <span>
+         </span>
+      </div>
+   </mat-toolbar>
 
+</div>
